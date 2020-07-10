@@ -4,11 +4,14 @@ const { VueLoaderPlugin } = require('vue-loader')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 
 module.exports = {
-	entry: path.join(__dirname, 'src', 'main.js'),
+	entry: {
+		calendar: path.join(__dirname, 'src', 'main.js'),
+		dashboard: path.join(__dirname, 'src', 'dashboard.js'),
+	},
 	output: {
 		path: path.resolve(__dirname, './js'),
 		publicPath: '/js/',
-		filename: 'calendar.js',
+		filename: '[name].js',
 		chunkFilename: 'chunks/calendar.[name].[contenthash].js'
 	},
 	module: {

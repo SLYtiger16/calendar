@@ -23,7 +23,10 @@ declare(strict_types=1);
  */
 namespace OCA\Calendar\AppInfo;
 
+use OCA\Calendar\Dashboard\CalendarPanel;
 use OCP\AppFramework\App;
+use OCP\Dashboard\RegisterPanelEvent;
+use OCP\EventDispatcher\IEventDispatcher;
 
 /**
  * Class Application
@@ -37,5 +40,14 @@ class Application extends App {
 	 */
 	public function __construct(array $params=[]) {
 		parent::__construct('calendar', $params);
+
+		$container = $this->getContainer();
+
+		// TODO: Migrate to new bootstrap once Calendar supports only Nextcloud 20+
+		/** @var IEventDispatcher $dispatcher */
+		$dispatcher = $container->getServer()->query(IEventDispatcher::class);
+		$dispatcher->addListener(RegisterPanelEvent::class, function (RegisterPanelEvent $event) use ($container) {
+			$event->registerPanel(CalendarPanel::class);
+		});
 	}
 }
