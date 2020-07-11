@@ -23,7 +23,7 @@
 <template>
 	<EmptyContent>
 		<img :src="imagePath" />
-		{{ t('calendar', 'Schedule your appointments') }}
+		{{ t('calendar', 'Nothing upcoming for now') }}
 		<template #desc>
 			<p></p>
 			<button>{{ t('calendar', 'Create a new event') }}</button>

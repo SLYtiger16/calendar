@@ -24,7 +24,6 @@ declare(strict_types=1);
 
 namespace OCA\Calendar\Dashboard;
 
-
 use OCP\IL10N;
 use OCP\IURLGenerator;
 
@@ -55,7 +54,7 @@ class CalendarPanel implements \OCP\Dashboard\IPanel {
 	 * @inheritDoc
 	 */
 	public function getTitle(): string {
-		return $this->l10n->t('Calendar');
+		return $this->l10n->t('Upcoming events');
 	}
 
 	/**
